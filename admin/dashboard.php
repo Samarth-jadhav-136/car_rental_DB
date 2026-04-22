@@ -15,7 +15,7 @@ $totalUsers = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS count F
   <style>
     body {
       background-color: #f4f4f9;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
     }
@@ -48,32 +48,55 @@ $totalUsers = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS count F
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       text-align: center;
-      padding: 20px;
+      padding: 30px 20px;
     }
     .card h5 {
+      margin-top: 0;
       margin-bottom: 10px;
-      font-size: 18px;
+      font-size: 20px;
+      color: #333;
     }
-    .card p {
-      font-size: 28px;
+    
+
+    .stat-card h5 {
+      color: inherit;
+    }
+    .stat-number {
+      font-size: 36px;
       font-weight: bold;
       margin: 0;
     }
+
+   
+    .card-desc {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
+   
     .bg-primary { background-color: #007bff; color: #fff; }
     .bg-success { background-color: #28a745; color: #fff; }
     .bg-warning { background-color: #ffc107; color: #333; }
+    
+   
     .btn {
       display: inline-block;
       margin: 5px;
-      padding: 10px 15px;
-      border-radius: 5px;
+      padding: 10px 18px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 14px;
       color: #fff;
+      transition: background 0.3s ease;
     }
     .btn-primary { background-color: #007bff; }
     .btn-secondary { background-color: #6c757d; }
-    .btn:hover { opacity: 0.9; }
+    .btn-primary:hover { background-color: #0056b3; }
+    .btn-secondary:hover { background-color: #5a6268; }
   </style>
 </head>
 <body>
@@ -82,37 +105,36 @@ $totalUsers = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS count F
   <div class="container">
     <h1>Admin Dashboard</h1>
 
-
     <div class="row">
-      <div class="card bg-primary">
+      <div class="card stat-card bg-primary">
         <h5>Total Cars</h5>
-        <p><?= $totalCars ?></p>
+        <p class="stat-number"><?= $totalCars ?></p>
       </div>
-      <div class="card bg-success">
+      <div class="card stat-card bg-success">
         <h5>Total Bookings</h5>
-        <p><?= $totalBookings ?></p>
+        <p class="stat-number"><?= $totalBookings ?></p>
       </div>
-      <div class="card bg-warning">
+      <div class="card stat-card bg-warning">
         <h5>Total Users</h5>
-        <p><?= $totalUsers ?></p>
+        <p class="stat-number"><?= $totalUsers ?></p>
       </div>
     </div>
 
     <div class="row">
       <div class="card">
         <h5>Manage Cars</h5>
-        <p>Add new cars or update existing ones.</p>
+        <p class="card-desc">Add new cars or update existing ones.</p>
         <a href="add_car.php" class="btn btn-primary">Add Car</a>
         <a href="manage_cars.php" class="btn btn-secondary">View Cars</a>
       </div>
       <div class="card">
         <h5>Manage Bookings</h5>
-        <p>View and manage customer bookings.</p>
+        <p class="card-desc">View and manage customer bookings.</p>
         <a href="manage_bookings.php" class="btn btn-primary">View Bookings</a>
       </div>
       <div class="card">
         <h5>Manage Users</h5>
-        <p>View registered users.</p>
+        <p class="card-desc">View registered users.</p>
         <a href="manage_users.php" class="btn btn-primary">View Users</a>
       </div>
     </div>
